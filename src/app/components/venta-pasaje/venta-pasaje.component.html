@@ -1,0 +1,70 @@
+<div>
+    <form class="card" #formregistro="ngForm">
+      <div class="card-header"> Envio de Mensajes</div>
+        <div class="card-body">
+          <div class="row form-group">
+            <label for="dnipasajero" class="col-sm-12 col-md-4">DNI</label>
+            <input class="form-control col-sm-12 col-md-8" type="number" id="dnipasajero" name="dnipasajero" placeholder="Ingrese DNI" required="8" [(ngModel)]="pasaje.dniPasajero"  #dniPasajero="ngModel"/>
+            <div *ngIf="dniPasajero.invalid && (dniPasajero.dirty || dniPasajero.touched)" class="alert-danger">
+              <div *ngIf="dniPasajero.errors.required">DNI es un campo requerido</div>
+              <div *ngIf="dniPasajero.errors.minlength">DNI debe tener minimo 8 caracteres</div>
+            </div>
+          </div>
+        <div class="row form-group">
+          <label for="precio" class="col-sm-12 col-md-4" >Precio del Pasaje</label>
+          <input class="form-control col-sm-12 col-md-8" type="number" id="precio" name="precio" placeholder="Ingrese valor del pasaje" [(ngModel)]="pasaje.precio" #precio="ngModel"/>
+        </div>
+        <div class="row form-group">
+            <label for="categoria" class="col-sm-12 col-md-4" >Categor&iacute;a</label>
+            <select name="categoria" id="categoria" class="form control col-sm-12 col-md-8" [(ngModel)]="pasaje.categoriaPasajero" (change)="calcularDescuento()">
+                <option value="m">Menor</option>
+                <option value="a">Adulto</option>
+                <option value="j">Juvilado</option>
+                <option value="s" selected>Selecciona alguna de las opciones</option>
+            </select>
+        </div>
+        <div class="row" *ngIf="mostrar">
+            <div class="col-4"></div>
+            <div class="col-2">Decuento: ${{precioDescuento}}</div>
+            <div class="col-2">Precio Total ${{precioActual}}</div>
+        </div>
+        <div class="row">
+           <div class="col-4" ></div>
+           <button type="button" class="btn btn-primary col-2" (click)="guardarVenta()" [disabled]="!formregistro.form.valid">Registrar Compra</button>
+           <div class="col-2" ></div>
+           <button type="button" class="btn btn-primary col-2" (click)="limpiarVenta()">Limpiar</button> 
+           <div class="col-2" ></div>      
+        </div>
+      </div>
+    </form>   
+    <div class="row"><h2 class="alert alert-success col-12">Listado de pasajeros</h2></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of pasajes">
+                <td></td>
+                <td>{{item.dniPasajero}}</td>
+                <td>{{item.precio}}</td>
+                <td>{{item.categoriaPasajero}}</td>
+                <td>{{item.fechaCompra | date: 'short'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<div>
+  <div class="row"><h2 class="alert alert-success col-12">Resumen de Pasajes</h2></div>
+  <ul>
+    <li>Adultos: {{cantAdulto}}</li>
+    <li>Niños: {{cantNinio}}</li>
+    <li>Jubilados: {{cantJubilado}}</li>
+ </ul>
+</div>

@@ -1,0 +1,32 @@
+<form>
+    <div class="row">
+        <select name="categ" id="categ" class="form control col-sm-12 col-md-2" [(ngModel)]="categoria" (change)="inicializarPalabras()">
+            <option value="1">Animal</option>
+            <option value="2">Util</option>
+            <option value="3">Navidad</option>
+        </select>
+        <div class="col-3"></div>
+        <button type="button" class="col-2" (click)="seleccionarPalabra()" >Inicio</button>
+    </div>
+    <div class="row alert alert-info">
+        <label class="col-3">Vidas: {{vidas}}</label>
+        <label class="col-3"></label>
+        <label class="col-3">Puntos: {{puntos}}</label>
+        <label class="col-3"></label>
+    </div>
+    <div class="row">
+        <img src={{palabra.urlImagen}} >
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-warning col-1" *ngFor="let l of palabraAux"  (click)="guardarLetra(l)"  [value]="l"></button>
+    
+        <label>{{letraAux}}</label>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-secondary col-2" *ngFor="let letra of abecedario" (click)="compararLetras(letra)">{{letra}}</button>
+        <label>{{acierto}}</label>
+    </div>
+    <div class="row alert alert-info">
+        <label class="col-3">Palabra: {{palabra.nombreEspaniol}}</label>
+    </div>
+</form>
