@@ -1,32 +1,44 @@
-<form>
-    <div class="row">
-        <select name="categ" id="categ" class="form control col-sm-12 col-md-2" [(ngModel)]="categoria" (change)="inicializarPalabras()">
-            <option value="1">Animal</option>
-            <option value="2">Util</option>
-            <option value="3">Navidad</option>
-        </select>
-        <div class="col-3"></div>
-        <button type="button" class="col-2" (click)="seleccionarPalabra()" >Inicio</button>
+<form class="card">
+    
+    <div class="row alert alert-info card-header justify-content-center">
+            <div class="col-md-3"></div>
+            <select name="categ" id="categ" class="form control col-sm-12 col-md-2" [(ngModel)]="categoria" (change)="inicializarPalabras()">
+                <option value="1">Animal</option>
+                <option value="2">Util</option>
+                <option value="3">Navidad</option>
+            </select>
+            <div class="col-md-2"></div>
+            <button type="button" class="btn btn-primary col-md-2 col-sm-12" (click)="seleccionarPalabra()" >Inicio</button>
+            
+            <div class="col-md-3"></div>
+        <label class="col-md-3"></label>
+        <label class="col-md-2 col-sm-12 ">Vidas: {{vidas}}</label>
+        <label class="col-md-2"></label>
+        <label class="col-md-2 col-sm-12">Puntos: {{puntos}}</label>
+        <label class="col-md-3"></label>
     </div>
-    <div class="row alert alert-info">
-        <label class="col-3">Vidas: {{vidas}}</label>
-        <label class="col-3"></label>
-        <label class="col-3">Puntos: {{puntos}}</label>
-        <label class="col-3"></label>
-    </div>
-    <div class="row">
+    <div class="row justify-content-center">
         <img src="{{palabra.urlImagen}}" >
     </div>
-    <div class="row">
-        <button type="button" class="btn btn-warning col-1" *ngFor="let l of palabraAux"  (click)="guardarLetra(l)"  [value]="l"></button>
-    
-        <label>{{letraAux}}</label>
+    <div class="form-group  row justify-content-center">
+        <input *ngIf="palabraIngles.length>=1" class="form-control col-1" type="text" maxlength="1"
+        name="letra1" id="letra1" [(ngModel)]="letra0" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(0,letra0)"/>
+        <input *ngIf="palabraIngles.length>=2" class="form-control col-1" type="text" maxlength="1"
+        name="letra2" id="letra2" [(ngModel)]="letra1" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(1,letra1)"/>
+        <input *ngIf="palabraIngles.length>=3" class="form-control col-1" type="text" maxlength="1"
+        name="letra3" id="letra3" [(ngModel)]="letra2" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(2,letra2)"/>
+        <input *ngIf="palabraIngles.length>=4" class="form-control col-1" type="text" maxlength="1"
+        name="letra4" id="letra4" [(ngModel)]="letra3" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(3,letra3)"/>
+        <input *ngIf="palabraIngles.length>=5" class="form-control col-1" type="text" maxlength="1"
+        name="letra5" id="letra5" [(ngModel)]="letra4" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(4,letra4)"/>
+        <input *ngIf="palabraIngles.length>=6" class="form-control col-1" type="text" maxlength="1"
+        name="letra6" id="letra6" [(ngModel)]="letra5" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(5,letra5)"/>
+        <input *ngIf="palabraIngles.length>=7" class="form-control col-1" type="text" maxlength="1"
+        name="letra7" id="letra7" [(ngModel)]="letra6" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(6,letra6)"/>
+        <input *ngIf="palabraIngles.length>=8" class="form-control col-1" type="text" maxlength="1"
+        name="letra8" id="letra8" [(ngModel)]="letra7" (ngModelChange)="ingresarLetra()" (ngModelChange)="restarVida(7,letra7)"/>
     </div>
-    <div class="row">
-        <button type="button" class="btn btn-secondary col-2" *ngFor="let letra of abecedario" (click)="compararLetras(letra)">{{letra}}</button>
-        <label>{{acierto}}</label>
-    </div>
-    <div class="row alert alert-info">
-        <label class="col-3">Palabra: {{palabra.nombreEspaniol}}</label>
+    <div class="row alert alert-info justify-content-center card-header" >
+        <label class="col-md-3 col-sm-12">Palabra: {{palabra.nombreEspaniol}}</label>
     </div>
 </form>

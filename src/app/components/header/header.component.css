@@ -1,0 +1,10 @@
+nav{
+    border-radius: 3px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+
+nav a:hover{
+    background-color: rgba(4, 7, 48, 0.603);
+    color: white;
+}

@@ -1,33 +1,64 @@
 <div class="row">
-    <form class="col-md-10 offset-1" method="post" action="">
-        <h2 class="text-center"> Registro Asistentes </h2>
-        <div class="form-group row">
-            <label for="idusuario" class="col-md-4">Correo de Usuario</label>
-            <input id="idusuario" class="form-control form-control-sm col-md-8" 
-                type="email" name="idusuario"  [(ngModel)]="asistente.usuario"/>
-        </div>
-        <div class="form-group row">
-            <label for="iddescripcion" class="col-md-4">Nombre de su Organización</label>
-            <input id="iddescripcion" class="form-control form-control-sm col-md-8"
-                 type="text" name="iddescripcion" [(ngModel)]="asistente.nombreOrganizacion"/>
-        </div>
-        <div class="form-group row custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1" (change)="const ($event)"/>
-            <label class="custom-control-label" for="customCheck1" > Solicita Constancia </label>
-        </div>
-        <div class="form-group text-center">
-            <button type="button" class="btn btn-secondary ml-2 mr-2" (click)="agregarAsistente()" > Guardar</button>
-            <button type="reset" class="btn btn-secondary ml-2 mr-2" >Limpiar</button>
+    <form class="col-md-10  card" method="post" action="">
+        <h2 class="row alert alert-info card-header justify-content-center"> Registro Asistentes </h2>
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="idusuario" class="col-md-4">Correo de Usuario</label>
+                <input id="idusuario" class="form-control form-control-sm col-md-8" 
+                    type="email" name="idusuario"  [(ngModel)]="asistente.usuario"/>
+            </div>
+            <div class="form-group row">
+                <label for="iddescripcion" class="col-md-4">Nombre de su Organización</label>
+                <input id="iddescripcion" class="form-control form-control-sm col-md-8"
+                     type="text" name="iddescripcion" [(ngModel)]="asistente.nombreOrganizacion"/>
+            </div>
+            <div class="form-group row custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1"
+                 (change)="const ($event)" [checked]="check"/>
+
+                <label class="custom-control-label" for="customCheck1" > Solicita Constancia </label>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2 col-sm-4 col-2" ></div> 
+
+                <button type="button" class="btn btn-primary col-md-2 col-8 col-sm-4" 
+                data-toggle="modal" data-target="#staticBackdrop" 
+                (click)="agregarAsistente()" > Registrar</button>
+                <div class="col-md-1 col-sm-4 col-1"></div> 
+
+                <button type="button" class="btn btn-primary col-md-2 col-12 col-sm-4"
+                 data-toggle="modal" data-target="#staticBackdrop" 
+                 (click)="modificarAsistente()" >Modificar</button>
+
+                 <div class="col-md-1 col-sm-4 col-2" ></div> 
+
+                <button type="reset" class="btn btn-primary col-md-2 col-8 col-sm-4" 
+                data-toggle="modal" data-target="#staticBackdrop" >Limpiar</button>
+                 
+                
+            </div>
+        </div> 
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col"> Usuario</th>
+                        <th scope="col">Nombre de organización</th>
+                        <th scope="col">Solicita Constancia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of asistentes">
+                        <th>{{item.usuario}}</th>
+                        <td>{{item.nombreOrganizacion | uppercase}}</td>
+                        <td>{{item.solicitaConstancia}}</td>
+                        <td><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#staticBackdrop" (click)="eliminarAsistente(item)">Eliminar</button></td>
+                        <td><button type="button" class="btn btn-primary " 
+                            data-toggle="modal" data-target="#staticBackdrop" 
+                            (click)="asistente=item">Seleccionar</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </form>
-</div>
-
-<div class="row ">
-    <ul *ngFor="let item of asistentes" class="col-12">
-        <li>
-            Usuario: {{item.usuario}} - 
-            Nombre de organización: {{item.nombreOrganizacion | uppercase}} - 
-            Solicita Constancia: {{item.solicitaConstancia}}
-        </li>
-    </ul>
 </div>

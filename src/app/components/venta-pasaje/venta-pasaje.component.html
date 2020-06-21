@@ -1,6 +1,6 @@
 <div>
     <form class="card" #formregistro="ngForm">
-      <div class="card-header"> Envio de Mensajes</div>
+      <div class="row alert alert-info card-header justify-content-center"><h2>Envio de Mensajes</h2></div>
         <div class="card-body">
           <div class="row form-group">
             <label for="dnipasajero" class="col-sm-12 col-md-4">DNI</label>
@@ -36,8 +36,7 @@
            <div class="col-2" ></div>      
         </div>
       </div>
-    </form>   
-    <div class="row"><h2 class="alert alert-success col-12">Listado de pasajeros</h2></div>
+      <div class="alert alert-info card-header justify-content-center row"><h2>Listado de pasajeros</h2></div>
     <table class="table">
         <thead>
             <tr>
@@ -58,13 +57,14 @@
             </tr>
         </tbody>
     </table>
+    <div>
+      <div class="alert alert-info card-header justify-content-center row"><h2>Resumen de Pasajes</h2></div>
+      <ul>
+        <li>Adultos: {{cantAdulto}}</li>
+        <li>Niños: {{cantNinio}}</li>
+        <li>Jubilados: {{cantJubilado}}</li>
+    </ul>
+    </div>
+    </form>   
     
-</div>
-<div>
-  <div class="row"><h2 class="alert alert-success col-12">Resumen de Pasajes</h2></div>
-  <ul>
-    <li>Adultos: {{cantAdulto}}</li>
-    <li>Niños: {{cantNinio}}</li>
-    <li>Jubilados: {{cantJubilado}}</li>
- </ul>
 </div>

@@ -1,9 +1,11 @@
 export class Asistente {
+    _id:string;
     usuario:string;
     nombreOrganizacion:string;
     solicitaConstancia:boolean;
 
-    Asistente(usuario?:string,nombreOrganizacion?:string,solicitaConstancia?:boolean,fechaAsistencia?:Date){
+    Asistente(_id?:string,usuario?:string,nombreOrganizacion?:string,solicitaConstancia?:boolean,fechaAsistencia?:Date){
+        this._id=_id;
         this.usuario=usuario;
         this.nombreOrganizacion=nombreOrganizacion;
         this.solicitaConstancia=solicitaConstancia;

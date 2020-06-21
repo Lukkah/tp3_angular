@@ -1,46 +1,59 @@
 <div>
     <form class="card">
-      <div class="card-header"> Envio de Mensajes</div>
-        <div class="card-body">
-          <div class="row form-group">
-            <label class="col-sm-12 col-md-4">Desde</label>
-            <input class="form-control col-sm-12 col-md-8" type="number" name="txtdesde" [(ngModel)]="mensaje.desde"/>
-          </div>
+      <h2 class="row alert alert-info card-header justify-content-center">Envio de Mensajes</h2>
+      <div class="card-body">
         <div class="row form-group">
-          <label class="col-sm-12 col-md-4" >Para</label>
-          <input class="form-control col-sm-12 col-md-8" type="number" name="txthasta" [(ngModel)]="mensaje.para"/>
-        </div>
-        <label> {{tamTexto}} caracteres restantes</label>
-        <div class="row form-group">
-          <textarea class="form-control" [maxlength]="tamMaxTexto" rows="5" name="txtTexto"  [(ngModel)]="mensaje.texto"  (ngModelChange)="cambiarTamTexto()">  
-          </textarea>
+          <div class="col-1" ></div>
+          <label class="col-sm-12 col-md-4">Desde</label>
+          <input class="form-control col-sm-12 col-md-5" type="number" name="txtdesde" [(ngModel)]="mensaje.desde"/>
         </div>
         <div class="row form-group">
-            <div class="col-4" ></div>
-            <button type="button" class="btn btn-primary col-2" (click)="enviarMensaje()" (click)="reiniciarTamTexto()"  data-toggle="modal" data-target="#staticBackdrop">Enviar</button>  
-            <div class="col-2" ></div> 
-            <button type="button" class="btn btn-primary col-2" (click)="reiniciarTamTexto()">Limpiar</button>    
-            <div class="col-2" ></div>
-            
-            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Mensaje para: {{paraAuxiliar}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Mensaje enviado: {{textoAuxiliar}} <br>
-                    Hora de envío {{fechaAuxiliar | date: 'short'}}
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  </div>
+          <div class="col-1" ></div>
+        <label class="col-sm-12 col-md-4" >Para</label>
+        <input class="form-control col-sm-12 col-md-5" type="number" name="txthasta" [(ngModel)]="mensaje.para"/>
+      </div>
+      <div class="row form-group">
+        <div class="col-1" ></div>
+        <label class="col-sm-12 col-md-4" >Empresa Telefonica</label>
+        <select name="empresa" id="empresa" class="form control col-sm-12 col-md-5"
+          [(ngModel)]="mensaje.empresa" >
+          <option *ngFor="let empresa of empresas" [ngValue]="empresa">{{empresa.nombre}}</option>
+        </select>
+      </div>
+      <div class="row form-group">
+        <div class="col-1" ></div>
+        <label class="col-11"> Mensaje /{{tamTexto}}</label>
+        <div class="col-2"></div> 
+        <textarea class="form-control col-sm-8 col-md-8" [maxlength]="tamMaxTexto" rows="5" 
+          name="txtTexto"  [(ngModel)]="mensaje.texto"  (ngModelChange)="cambiarTamTexto()">  
+        </textarea>
+      </div>
+      <div class="row form-group">
+          <div class="col-md-3" ></div>
+            <button type="button" class="btn btn-primary col-md-2" (click)="enviarMensaje()" (click)="reiniciarTamTexto()"  data-toggle="modal" data-target="#staticBackdrop">Enviar</button>  
+          <div class="col-2" ></div> 
+            <button type="button" class="btn btn-primary col-md-2" (click)="reiniciarTamTexto()">Limpiar</button>    
+          <div class="col-md-2" ></div>
+          
+          <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Mensaje para: {{auxPara}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Mensaje enviado: {{auxTexto}} <br>
+                  Hora de envío {{auxFecha| date: 'short'}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
               </div>
-            </div>       
+            </div>
+          </div>       
         </div>
       </div>
     </form>    

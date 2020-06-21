@@ -12,6 +12,9 @@ import { CursoComponent } from './components/curso/curso.component';
 import { VentaPasajeComponent } from './components/venta-pasaje/venta-pasaje.component';
 import { JuegoComponent } from './components/juego/juego.component';
 
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,8 @@ import { JuegoComponent } from './components/juego/juego.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

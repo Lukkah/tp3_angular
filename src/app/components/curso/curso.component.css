@@ -1,0 +1,29 @@
+.card{
+    margin-left:70px;
+    margin-right:70px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 0px;
+}
+
+.card-header{
+    color: rgb(20, 141, 125);
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.692);
+}
+form{
+    background-color: rgb(2, 97, 97);
+}
+label{
+    color: white;
+}
+textarea{
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 200px;
+}
+
+ul{
+    margin-left: 40px;
+    color: white;
+}

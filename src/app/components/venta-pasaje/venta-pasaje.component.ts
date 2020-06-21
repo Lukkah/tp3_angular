@@ -8,7 +8,7 @@ import { VentasService } from 'src/app/services/ventas.service';
   styleUrls: ['./venta-pasaje.component.css']
 })
 export class VentaPasajeComponent implements OnInit {
-
+  
   pasaje:Pasaje;
   pasajes: Array<Pasaje>;
   precioDescuento:number=0;
